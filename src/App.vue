@@ -18,15 +18,15 @@
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list nav dense>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text-h6"> Application </v-list-item-title>
-              <v-list-item-subtitle>Vue + Vuetify</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-divider></v-divider>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6"> Application </v-list-item-title>
+            <v-list-item-subtitle>Vue + Vuetify</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
 
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+        <v-list-item-group active-class="deep-purple--text text--accent-4">
           <v-list-item to="/">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
@@ -44,10 +44,32 @@
               <v-list-item-title>About</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
+          <v-list-group :value="false" prepend-icon="mdi-palette-outline" >
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title>Styles</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item to="/styles/textandtypography" >
+              <v-list-item-title >Text and Typography</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/styles/spacing">
+              <v-list-item-title>Margin and Padding</v-list-item-title>
+            </v-list-item>
+          </v-list-group>
+
+          <v-list-item to="/gridsystem">
+            <v-list-item-icon>
+              <v-icon>mdi-view-grid-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Grid System</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-
 
     <v-main>
       <v-container fluid>
@@ -66,15 +88,10 @@ export default {
   components: {},
   // 컴포넌트 데이터 정의
   data() {
-    return { drawer: false, group: null };
+    return { drawer: false };
   },
   // 컴포넌트 메소드 정의
   methods: {},
-  watch: {
-    group() {
-      this.drawer = false;
-    },
-  },
 };
 </script>
 
